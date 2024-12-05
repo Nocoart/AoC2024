@@ -19,9 +19,10 @@ const ordered = []
 
 for (const [first, second] of pairs) {
   console.log([first, second])
-  const weigth = weightList.get(second)
-  if (weigth || weigth === 0) weightList.set(second, weigth + 1)
+  const weigth2 = weightList.get(second)
+  if (weigth2 || weigth2 === 0) weightList.set(second, weigth2 + 1)
   else weightList.set(second, 0)
+  if (!weightList.has(first)) weightList.set(first, 0)
 }
 
 let count = 0
@@ -31,7 +32,6 @@ while (weightList.size) {
     if (weigth === 0) {
       ordered.push(value)
       weightList.delete(value)
-      break
     }
   }
   for (const [value, weigth] of weightList) {
@@ -39,7 +39,7 @@ while (weightList.size) {
   }
 }
 
-console.log(weightList)
+console.log(ordered)
 
 let result
 const end = performance.now()
